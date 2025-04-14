@@ -132,8 +132,39 @@ export function Sidebar({ className }: SidebarProps) {
               <ListItemText primary="Angular" />
             </ListItemButton>
           </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/angular2"
+              selected={isActive("/angular2")}
+              sx={{
+                px: 3,
+                py: 1,
+                borderRadius: 0,
+                "&.Mui-selected": {
+                  bgcolor: "#FFF8F0",
+                  color: theme.palette.primary.main,
+                  fontWeight: 500,
+                  "&:hover": {
+                    bgcolor: "#FFF8F0",
+                  },
+                  "& .MuiListItemIcon-root": {
+                    color: theme.palette.primary.main,
+                  },
+                },
+              }}
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                {/* <BarChartIcon fontSize="small" /> */}
+              </ListItemIcon>
+              <ListItemText primary="Angular 2" />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Box>
+
+      
 
       <Divider />
       <Box sx={{ p: 2 }}>

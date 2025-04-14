@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { DashboardLayout } from '../layout/MainLoyout';
 import ReactPage from '../React';
 import { AngularPage } from '../pages/home';
+import { AngularPage2 } from '../pages/home2';
 
 
 
@@ -24,6 +25,7 @@ export function AppRouter() {
     <Route path="/" element={<DashboardLayout />}>
       <Route path="/react" element={<ReactPage/>} />
       <Route path="/angular" element={<AngularPage/>} />
+      <Route path="/angular2" element={<AngularPage2/>} />
 
     </Route>
 
