@@ -26,7 +26,7 @@ function ReactPage() {
         onLoad={() => {
           setIsLoading(false);
         }}
-        src=" http://localhost:5174/"
+        src="https://superlative-horse-85bb5c.netlify.app/"
         style={{
           border: "none",
           visibility: isLoading ? "hidden" : "visible",
