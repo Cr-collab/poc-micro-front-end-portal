@@ -25,27 +25,7 @@ import {
   Divider,
 } from "@mui/material";
 
-import {
-  Dashboard as DashboardIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  People as UsersIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  CreditCard as CreditCardIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  BarChart as BarChartIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Inventory as PackageIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ExpandMore as ChevronDownIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ChevronRight as ChevronRightIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Layers as LayersIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Storage as DatabaseIcon,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Apartment as BuildingLayersIcon,
-} from "@mui/icons-material";
+import { Dashboard as DashboardIcon } from "@mui/icons-material";
 
 interface SidebarProps {
   className?: string;
@@ -54,26 +34,9 @@ interface SidebarProps {
 export function Sidebar({ className }: SidebarProps) {
   const location = useLocation();
   const theme = useTheme();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
-    cadastros: false,
-    settings: false,
-  });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const toggleMenu = (menu: string) => {
-    setOpenMenus((prev) => ({
-      ...prev,
-      [menu]: !prev[menu],
-    }));
-  };
 
   const isActive = (path: string) => {
     return location.pathname === path;
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const isActiveGroup = (prefix: string) => {
-    return location.pathname.startsWith(prefix);
   };
 
   return (
@@ -164,7 +127,7 @@ export function Sidebar({ className }: SidebarProps) {
               }}
             >
               <ListItemIcon sx={{ minWidth: 40 }}>
-                <BarChartIcon fontSize="small" />
+                {/* <BarChartIcon fontSize="small" /> */}
               </ListItemIcon>
               <ListItemText primary="Angular" />
             </ListItemButton>
@@ -282,7 +245,6 @@ export function Header({ title }: HeaderProps) {
 }
 
 export function DashboardLayout() {
-  
   useEffect(() => {
     localStorage.setItem("Teste", "Local storage compartilhado");
   }, []);
