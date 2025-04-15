@@ -1,9 +1,15 @@
 import { Box, CircularProgress } from "@mui/material";
-import { useRef, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 
-function ReactPage() {
+export const ReactPage = memo(() => {
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<HTMLIFrameElement>(null);
+
+  const onLoad = useCallback(() => {
+    console.log("carregou");
+    console.log("carregou");
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
@@ -23,9 +29,7 @@ function ReactPage() {
 
       <iframe
         ref={ref}
-        onLoad={() => {
-          setIsLoading(false);
-        }}
+        onLoad={onLoad}
         src="https://superlative-horse-85bb5c.netlify.app/"
         style={{
           border: "none",
@@ -36,6 +40,4 @@ function ReactPage() {
       />
     </>
   );
-}
-
-export default ReactPage;
+});

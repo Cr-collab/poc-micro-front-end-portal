@@ -275,7 +275,7 @@ export function Header({ title }: HeaderProps) {
   );
 }
 
-export function DashboardLayout() {
+export function DashboardLayout({children}) {
   useEffect(() => {
     localStorage.setItem("Teste", "Local storage compartilhado");
   }, []);
@@ -305,7 +305,7 @@ export function DashboardLayout() {
             minWidth: 0, // Previne problemas de overflow
           }}
         >
-          <Outlet />
+          {children}
         </Box>
       </Box>
     </Box>

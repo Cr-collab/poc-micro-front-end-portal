@@ -1,9 +1,13 @@
 import { Box, CircularProgress } from "@mui/material";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const AngularPage2 = () => {
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    console.log("Angular 2");
+  }, []);
 
   return (
     <>
@@ -17,7 +21,7 @@ export const AngularPage2 = () => {
             alignItems: "center",
           }}
         >
-          <CircularProgress />
+          <CircularProgress color="error" />
         </Box>
       )}
 
@@ -32,6 +36,7 @@ export const AngularPage2 = () => {
           visibility: isLoading ? "hidden" : "visible",
           width: "100%",
           height: "100%",
+          borderStyle: "1px solid red",
         }}
       />
     </>

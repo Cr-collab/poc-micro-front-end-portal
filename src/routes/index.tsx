@@ -1,36 +1,71 @@
-// src/routes/index.jsx
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { DashboardLayout } from '../layout/MainLoyout';
-import ReactPage from '../React';
-import { AngularPage } from '../pages/home';
-import { AngularPage2 } from '../pages/home2';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import { DashboardLayout } from "../layout/MainLoyout";
+import { ReactPage } from "../React";
+import { AngularPage } from "../pages/home";
+import { AngularPage2 } from "../pages/home2";
+import { Box, Button, styled } from "@mui/material";
 
+const AngularRoutesContainer = styled(Box)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
 
+const AngularRouteManager = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  console.log("🚀 ~ AngularRouteManager ~ currentPath:", currentPath)
 
-// --- Lazy Loading das Páginas ---
-// Isso é crucial para escalabilidade e performance.
-// O código de cada página só será carregado quando a rota for acessada.
-// const HomePage = React.lazy(() => import('../pages/HomePage'));
-// const LoginPage = React.lazy(() => import('../pages/LoginPage'));
-
-// // Componente simples de fallback para o Suspense
+  return (
+    <AngularRoutesContainer>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: currentPath === "/angular" ? "block" : "none",
+        }}
+      >
+        <AngularPage />
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: currentPath === "/angular2" ? "block" : "none",
+        }}
+      >
+        <AngularPage2 />
+      </Box>
+    </AngularRoutesContainer>
+  );
+};
 
 export function AppRouter() {
   return (
-    <Routes>
-    {/* Redirecionar a raiz para o dashboard */}
-    <Route path="/" element={<Navigate to="/react" replace />} />
+    <DashboardLayout>
+      <Box
+        sx={{
+          border: "1px solid red",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Navigate to="/react" replace />} />
 
-    {/* Rotas do Dashboard usando o layout compartilhado */}
-    <Route path="/" element={<DashboardLayout />}>
-      <Route path="/react" element={<ReactPage/>} />
-      <Route path="/angular" element={<AngularPage/>} />
-      <Route path="/angular2" element={<AngularPage2/>} />
+          {/* Cache the content of these routes */}
+          <Route path="/*" element={<AngularRouteManager />} />
 
-    </Route>
-
-    {/* Página 404 */}
-    <Route path="*" element={<div>Página não encontrada</div>} />
-  </Routes>
+          <Route path="/react" element={<ReactPage />} />
+        </Routes>
+      </Box>
+    </DashboardLayout>
   );
 }

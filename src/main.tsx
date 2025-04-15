@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import { AppRouter } from "./routes/index.tsx";
-
+import { AppRouter, ComponentCache } from "./routes/index.tsx";
 
 export const theme = createTheme({
   palette: {
@@ -38,14 +37,14 @@ export const theme = createTheme({
       },
     },
   },
-})
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <AppRouter />
+          <AppRouter />
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>
